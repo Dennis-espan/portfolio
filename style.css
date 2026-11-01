@@ -1,0 +1,257 @@
+:root {
+    --fundo:rgb(230, 230, 230);
+    --texto:rgb(0,0,0);
+    --hovmenu:rgb(189, 189, 189);
+}
+:root[data-tema="escuro"] {
+    --texto:rgb(230, 230, 230);
+    --fundo:rgb(0,0,0);
+    --hovmenu:rgb(34, 34, 34);
+}
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    font-family: "Stack Sans Headline", sans-serif;
+    font-weight:100;
+    list-style: none;
+    text-decoration: none;
+}
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(0.75rem, 2vw, 2rem);
+  padding: clamp(1rem, 2vh, 2rem) clamp(1rem, 2vw, 2rem) 0;
+  z-index: 1;
+}
+
+.linha {
+  flex: .7;
+  margin: auto;
+  height: 2px;
+  background-color:var(--texto);
+  margin-bottom: 1.6%;
+}
+body {
+  background-color: var(--fundo);
+  color: var(--texto);
+  overflow-x: hidden;
+  transition: background-color 0.3s, color 0.3s;
+}
+main {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+header span {
+  font-size: clamp(1rem, 3.5vw, 3rem);
+}
+h1 {
+  font-family: "BBH Bogle", sans-serif;
+  font-weight: bold;
+  font-size: clamp(4rem, 10vi, 11rem);
+  letter-spacing: 3%;
+  line-height: 75%;
+  margin: auto 0 2vh;
+}
+footer {
+  font-size: clamp(1rem, 2.4vw, 2.5rem);
+  color: var(--fundo);
+  background-color: var(--texto);
+  width: 100%;
+  padding: clamp(1rem, 2vw, 2rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: clamp(1rem, 8vw, 25%);
+}
+
+footer a{
+  color: var(--fundo);
+}
+
+footer h2 {
+  font-size: inherit;
+}
+
+main > ul {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
+  z-index: 1;
+}
+main > ul li + li {
+  margin-top: 0.35em;
+}
+.galeria:hover{
+font-size: larger;
+cursor:default;
+}
+
+.btn {
+  display: block;
+  font-size: clamp(5rem, 15vh, 12rem);
+  padding: clamp(1rem, 5vh, 4rem);
+  font-weight: bolder;
+  line-height: 1;
+  cursor: default;
+  transition: rotate 0.2s;
+}
+.dropdown {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+}
+
+.submenu {
+  position: absolute;
+  bottom: 65%;
+  right: 0;
+  transform: translateY(8px);
+  width: max-content;
+  min-width: 180px;
+  font-size: 1.2rem;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+}
+
+.dropdown:hover .submenu,
+.dropdown:focus-within .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.submenu a,
+.submenu button {
+  display: block;
+  border: none;
+  padding: 0.8rem 0;
+  color: var(--texto);
+  background-color: var(--fundo);
+  font-size: inherit;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+}
+
+.submenu a:hover,
+.submenu button:hover {
+  background-color: var(--hovmenu);
+}
+
+.dropdown:hover .btn,
+.dropdown:focus-within .btn {
+  rotate: 45deg;
+}
+
+.flutuante {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  height: auto;
+  animation: flutuar 6s ease-in-out infinite;
+}
+
+.f1 { width: 10vw; top: 18%; left: 57%; }
+.f2 { width: 12vw; top: 50%; left: 23%; animation-delay: -2s;  filter: drop-shadow(2vh 6vh rgba(0, 0, 0, 0.15)); }
+.f3 { width: 17vw; top: 74%; right: 8%; animation-delay: -4s; }
+.centro {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: clamp(14rem, 40vw, 40rem);
+  height: auto;
+  max-height: 60vh;
+  max-height: 60dvh;
+  object-fit: contain;
+  z-index: -1;
+  pointer-events: none;
+
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+main:has(.g1:hover) .img1,
+main:has(.g2:hover) .img2,
+main:has(.g3:hover) .img3 {
+  opacity: 1;
+}
+
+@keyframes flutuar {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50%      { transform: translateY(-2vh) rotate(3deg); }
+}
+
+main:not(:has(.galeria:hover)) .img2 {
+  opacity: 1;
+}
+
+@media (max-width: 640px) {
+  header {
+    gap: 0.5rem;
+  }
+
+  header span {
+    font-size: clamp(0.9rem, 4vw, 1.4rem);
+  }
+
+  .linha {
+    margin-bottom: 0.6rem;
+  }
+
+  h1 {
+    font-size: clamp(3.5rem, 15vw, 6.5rem);
+  }
+
+  main > ul {
+    max-width: 45%;
+    font-size: clamp(0.9rem, 3.5vw, 1.2rem);
+  }
+
+  .btn {
+    font-size: clamp(4.5rem, 16vw, 7rem);
+    padding: 1.25rem;
+  }
+
+  .submenu {
+    bottom: calc(100% + 0.5rem);
+    min-width: 9rem;
+    font-size: 1rem;
+  }
+
+  .f1 { width: 14vw; }
+  .f2 { width: 17vw; }
+  .f3 { width: 22vw; }
+
+  .centro {
+    width: 68vw;
+    max-height: 45vh;
+    max-height: 45dvh;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  footer h2 {
+    max-width: 100%;
+    font-size: clamp(0.85rem, 3.5vw, 1.1rem);
+    overflow-wrap: anywhere;
+  }
+}
