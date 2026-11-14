@@ -1,53 +1,133 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR" data-idioma="pt" data-vista="menu" data-etapa="0">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script>const t = localStorage.getItem('tema'); if (t) document.documentElement.dataset.tema = t;</script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=BBH+Bogle&family=Stack+Sans+Headline:wght@200..700&display=swap" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
-    <title>D.Ferreira</title>
-    <script src="script.js" defer></script>
-     <link rel="icon" type="image/x-icon" href="images/+.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfólio de Dennis Ferreira: designer UX/UI e desenvolvedor frontend. Conheça projetos digitais em design e desenvolvimento web.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Portfolio">
+  <meta property="og:description" content="Portfólio de Dennis Ferreira: designer UX/UI e desenvolvedor frontend. Conheça projetos digitais em design e desenvolvimento web.">
+  <meta property="og:locale" content="pt_BR">
+  <script>document.documentElement.dataset.tema = localStorage.getItem('tema') ?? 'claro'</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Notch:wght@200..700&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+  <link rel="icon" href="images/icon.svg">
+  <script src="script.js" defer></script>
+  <title>Portfolio</title>
 </head>
 <body>
-  <header>
-    <span>UI/UX Designer</span>
-      <div class="linha"></div>
-    <span>Frontend Dev</span>
-  </header>
+  <img class="cursor" src="images/cursor.svg" alt="" aria-hidden="true">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="logo" viewBox="0 0 198 151">
+    <path fill="currentColor" fill-rule="evenodd" d="M133.888 5.37598C126.037 1.79209 116.779 3.41791e-05 106.112 0H0V28.9277H102.272C106.795 28.9278 110.422 30.2938 113.152 33.0244C115.883 35.6697 117.248 39.3391 117.248 44.0322V45.5684C117.248 50.2615 115.883 53.9735 113.152 56.7041C110.422 59.3493 106.795 60.6718 102.272 60.6719H39.6797L39.6801 150.5H78.68V128H183.615L183.5 101H78.68V90.366H197.5V60.6719H156.322C156.322 60.6719 158.5 56 158.72 45.5684V44.0322C158.72 34.9871 156.544 27.179 152.192 20.6084C147.926 14.0377 141.824 8.95998 133.888 5.37598Z"/>
+  </symbol>
+</svg>
+
+  <section class="intro">
+    <div class="opcoes">
+      <div class="col col-idioma">
+        <button type="button" class="opcao" data-lang="pt" aria-pressed="false">Português</button>
+        <button type="button" class="opcao" data-lang="en" aria-pressed="false">English</button>
+      </div>
+      <div class="col col-extra">
+        <button type="button" class="opcao" data-tema-btn="escuro" data-t="escuro" aria-pressed="false">Modo escuro</button>
+        <button type="button" class="opcao" data-tema-btn="claro" data-t="claro" aria-pressed="false">Modo claro</button>
+      </div>
+      <div class="col col-extra">
+        <button type="button" class="opcao" id="btn-continuar" data-t="continuar">Continuar</button>
+      </div>
+    </div>
+    <figure class="marca">
+      <svg class="logo" aria-hidden="true"><use href="#logo"/></svg>
+      <figcaption>Dennis Ferreira</figcaption>
+    </figure>
+  </section>
 
   <main>
+    <p class="sr" id="slide-status" aria-live="polite" aria-atomic="true"></p>
+    <header>
+      <span>UX/UI Designer</span>
+      <div class="linha"></div>
+      <span>Frontend Dev</span>
+    </header>
 
-      <img class="flutuante f1" src="images/gema-asterisco.png" alt="">
-  <img class="flutuante f2" src="images/gema-diamante.png" alt="">
-  <img class="flutuante f3" src="images/gema-estrela.png" alt="">
-
-<img class="centro img1" src="images/Redacted.png" alt="Captar">
-<img class="centro img2" src="images/Redacted.png" alt="[REDACTED]">
-<img class="centro img3" src="images/Redacted.png" alt="xpto">
-
-<ul>
-  <li class="galeria g1">[REDACTED]</li>
-  <li class="galeria g2">[REDACTED]</li>
-  <li class="galeria g3">[REDACTED]</li>
-</ul>
-    <h1>Dennis<br>Ferreira</h1>
-    <div class="dropdown">
-    <a class="btn">+</a>
-      <ul class="submenu">
-        <li><a href="docs/curriculo.pdf" target="_blank">Curriculo.PDF</a></li>
-        <li><a href="docs/resume.pdf" target="_blank">Resume.PDF</a></li>
-        <li><button type="button" id="btn-tema">Mudar tema</button></li>
-    </ul>
+    <div class="gemas" aria-hidden="true">
+      <div class="flutuante f1"><img src="images/gema-asterisco.png" data-gema="asterisco" alt=""></div>
+      <div class="flutuante f2"><img src="images/gema-diamante.png" data-gema="diamante" alt=""></div>
+      <div class="flutuante f3"><img src="images/gema-estrela.png" data-gema="estrela" alt=""></div>
     </div>
-  </main>
 
-  <footer>
-    <h2><a href="https://api.whatsapp.com/send/?phone=5513997941553&text=Ol%C3%A1+vim+atrav%C3%A9s+do+seu+portifolio" target="_blank">TEL:+55 13 99794-1553</a></h2>
-    <h2><a href="mailto:dennisffaria3@gmail.com" target="_blank" >EMAIL:dennisffaria3@gmail.com</a></h2>
-  </footer>
+    <div class="trilha" id="trilha" role="region" aria-label="Seções do portfólio" tabindex="-1">
+      <section class="slide ativo" aria-labelledby="titulo-sobre">
+        <div class="palco">
+          <div class="slot slot-texto"><p class="txt" data-t="esq">Olá, me chamo Dennis Ferreira e trabalho com design e desenvolvimento frontend. Minha base técnica e capacidade de comunicação me permitem adaptar ao seu processo e a sua equipe de forma rápida e orgânica.</p></div>
+          <div class="slot slot-marca">
+            <svg class="logo" aria-hidden="true"><use href="#logo"/></svg>
+            <h1 id="titulo-sobre">Dennis Ferreira</h1>
+          </div>
+          <div class="slot slot-texto"><p class="txt" data-t="dir">Transformo a presença digital da sua empresa. Crio e revitalizo identidades e páginas web estudando o seu público-alvo para reconectar sua marca com os clientes, entre em contato para alavancar seus resultados.</p></div>
+        </div>
+      </section>
+
+      <section class="slide" aria-labelledby="titulo-redacted">
+        <h2 class="sr" id="titulo-redacted" data-t="projetoRedacted">Projeto [REDACTED]</h2>
+        <div class="palco">
+          <div class="slot"><img src="images/Redacted-mob.png" data-alt="redactedMobile" alt="Aplicativo [REDACTED] exibido em um smartphone"></div>
+          <div class="slot"><img src="images/redacted-art.png" data-alt="redactedVisual" alt="Identidade visual do projeto [REDACTED]"></div>
+          <div class="slot"><img src="images/redacted-pc.png" data-alt="redactedDesktop" alt="Site [REDACTED] exibido em um computador"></div>
+        </div>
+      </section>
+
+      <section class="slide" aria-labelledby="titulo-captar">
+        <h2 class="sr" id="titulo-captar" data-t="projetoCaptar">Projeto Captar</h2>
+        <div class="palco">
+          <div class="slot"><img src="images/captar-mob.png" data-alt="captarMobile" alt="Projeto Captar exibido em um smartphone"></div>
+          <div class="slot"><img src="images/captar-art.png" data-alt="captarVisual" alt="Identidade visual do projeto Captar"></div>
+          <div class="slot"><img src="images/captar-pc.png" data-alt="captarDesktop" alt="Site do projeto Captar exibido em um computador"></div>
+        </div>
+      </section>
+
+      <section class="slide" aria-labelledby="titulo-contato">
+        <h2 class="sr" id="titulo-contato" data-t="contato">Contato</h2>
+        <div class="palco">
+          <a class="slot slot-texto slot-link" href="https://api.whatsapp.com/send/?phone=5513997941553&text=Ol%C3%A1,+vim+atrav%C3%A9s+do+seu+portf%C3%B3lio" target="_blank" rel="noopener">
+            <p>Whatsapp:<br>+55 13 99794-1553</p>
+          </a>
+          <div class="slot slot-marca">
+            <svg class="logo" aria-hidden="true"><use href="#logo"/></svg>
+            <span>Dennis Ferreira</span>
+          </div>
+          <a class="slot slot-texto slot-link" href="mailto:dennisffaria3@gmail.com">
+            <p>Email:<br>dennisffaria3@gmail.com</p>
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <nav class="botoes" aria-label="Menu">
+      <button type="button" class="btn" id="btn-menu"><span data-t="menu">Menu</span></button>
+      <button type="button" class="btn" id="btn-contato" data-t="contato">Contato</button>
+      <a class="btn" id="btn-curriculo" href="docs/curriculo.pdf" target="_blank" rel="noopener" data-t="curriculo">Currículo</a>
+    </nav>
+
+    <nav class="setas" aria-label="Navegação das seções">
+      <button type="button" class="seta" id="btn-anterior" aria-label="Seção anterior" aria-controls="trilha">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+      <button type="button" class="seta" id="btn-proximo" aria-label="Próxima seção" aria-controls="trilha">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+    </nav>
+
+    <ul class="mapa" aria-label="Mapa">
+      <li style="--i:0"><button type="button" data-t="sobre">Sobre</button></li>
+      <li style="--i:1"><button type="button">[REDACTED]</button></li>
+      <li style="--i:2"><button type="button">CAPTAR</button></li>
+      <li style="--i:3"><button type="button" data-t="contato">Contato</button></li>
+    </ul>
+
+  </main>
 </body>
 </html>
