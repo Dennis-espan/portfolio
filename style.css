@@ -6,6 +6,8 @@
   --mx: 0;
   --my: 0;
   --atual: 0;
+  --passo-mapa: clamp(7rem, 16vw, 14rem);
+  --espaco-seta: clamp(2.9rem, 5vw, 3.8rem);
 }
 :root[data-tema="escuro"] {
   --fundo: var(--vermelho);
@@ -293,7 +295,7 @@ header {
 }
 .setas {
   position: fixed;
-  bottom: calc(9dvh + .125rem);
+  bottom: 9dvh;
   left: 50%;
   z-index: 5;
   translate: -50% 0;
@@ -310,8 +312,8 @@ header {
   opacity: .75;
   transition: color .2s, opacity .2s, scale .2s;
 }
-.seta:first-child { right: calc(100% + clamp(7rem, 16vw, 14rem) + 2.6rem); }
-.seta:last-child { left: calc(100% + clamp(7rem, 16vw, 14rem) + 2.6rem); }
+.seta:first-child { right: calc(100% + var(--passo-mapa) + var(--espaco-seta)); }
+.seta:last-child { left: calc(100% + var(--passo-mapa) + var(--espaco-seta)); }
 .seta svg {
   width: 1.35rem;
   fill: none;
@@ -356,7 +358,7 @@ header {
   position: absolute;
   left: 50%;
   bottom: 0;
-  translate: calc(-50% + (var(--i) - var(--atual)) * clamp(7rem, 16vw, 14rem)) 0;
+  translate: calc(-50% + (var(--i) - var(--atual)) * var(--passo-mapa)) 0;
   transition: translate .9s var(--ease);
 }
 .mapa button {
@@ -450,6 +452,7 @@ header {
 }
 
 @media (max-width: 760px) {
+  :root { --passo-mapa: clamp(5rem, 25vw, 7rem); }
   .intro {
     flex-direction: column;
     justify-content: center;
@@ -555,7 +558,7 @@ header {
     padding: .65em .25em;
   }
   .mapa { bottom: calc(4.5rem + env(safe-area-inset-bottom)); }
-  .setas { bottom: calc(4.5rem + env(safe-area-inset-bottom) + .125rem); }
+  .setas { bottom: calc(4.5rem + env(safe-area-inset-bottom)); }
   .seta { width: 1.8rem; height: 1.8rem; }
 }
 
