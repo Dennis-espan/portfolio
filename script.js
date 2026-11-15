@@ -114,6 +114,7 @@ definirTema(raiz.dataset.tema);
 
 const vista = (v, moverFoco = false) => {
   raiz.dataset.vista = v;
+  raiz.dataset.animacaoMenu = v === 'portfolio' ? 'true' : 'false';
   $('.intro').inert = v === 'portfolio';
   $('main').inert = v === 'menu';
   if (v === 'portfolio') escrever();
@@ -127,6 +128,7 @@ $('#btn-menu').addEventListener('click', () => {
 });
 
 const atualizar = () => {
+  raiz.dataset.animacaoMenu = 'false';
   raiz.style.setProperty('--atual', atual);
   slides.forEach((s, n) => {
     s.classList.toggle('ativo', n === atual);
@@ -180,13 +182,17 @@ addEventListener('wheel', e => {
   ir(atual + Math.sign(delta));
 }, { passive: false });
 
+let timerScroll;
 trilha.addEventListener('scroll', () => {
   if (!mobile.matches || raiz.dataset.vista !== 'portfolio') return;
-  const proximo = Math.round(trilha.scrollTop / trilha.clientHeight);
-  if (proximo === atual) return;
-  atual = proximo;
-  voltarPara = null;
-  atualizar();
+  clearTimeout(timerScroll);
+  timerScroll = setTimeout(() => {
+    const proximo = Math.round(trilha.scrollTop / trilha.clientHeight);
+    if (proximo === atual) return;
+    atual = proximo;
+    voltarPara = null;
+    atualizar();
+  }, 180);
 }, { passive: true });
 
 let inicioToque = null;
